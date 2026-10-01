@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="site-url" content="https://vikali666.github.io/cuenta_regresiva/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="🚀 Lanzamiento 10 de Octubre">
+    <meta property="og:description" content="¡Nuestra app está por despegar! Cuenta regresiva oficial del lanzamiento.">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="🚀 Lanzamiento 10 de Octubre">
+    <meta name="twitter:description" content="¡Nuestra app está por despegar! Cuenta regresiva oficial del lanzamiento.">
+
+    <title>🚀 Cuenta regresiva — Lanzamiento 10 de Octubre</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #0b1026 0%, #1b2a52 50%, #0b1026 100%);
+            color: #ffffff;
+            padding: 40px 20px;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            font-size: clamp(1.4rem, 4vw, 2.4rem);
+            margin-bottom: 10px;
+            text-align: center;
+            background: linear-gradient(90deg, #ffd166, #ff8c42, #ffd166);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: #9fb3d9;
+            margin-bottom: 35px;
+            text-align: center;
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+        }
+
+        /* ===== Reloj cuenta regresiva ===== */
+        .countdown {
+            display: flex;
+            gap: clamp(10px, 3vw, 25px);
+            margin-bottom: 40px;
+        }
+
+        .time-box {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            padding: clamp(12px, 3vw, 22px) clamp(14px, 3.5vw, 28px);
+            text-align: center;
+            min-width: clamp(70px, 18vw, 110px);
+            backdrop-filter: blur(6px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+        }
+
+        .time-box .number {
+            font-size: clamp(1.8rem, 6vw, 3.2rem);
+            font-weight: 700;
+            font-variant-numeric: tabular-nums;
+            color: #ffd166;
+        }
+
+        .time-box .label {
+            font-size: clamp(0.7rem, 2vw, 0.85rem);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #9fb3d9;
+            margin-top: 6px;
+        }
+
+        /* ===== Imagen central ===== */
+        .image-container {
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            display: block;
+        }
+
+        footer {
+            margin-top: 35px;
+            color: #6c81a8;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🚀 ¡Nuestra app está por despegar!</h1>
+    <p class="subtitle">Cuenta regresiva para el lanzamiento — 10 de octubre</p>
+
+    <div class="countdown">
+        <div class="time-box">
+            <div class="number" id="days">00</div>
+            <div class="label">Días</div>
+        </div>
+        <div class="time-box">
+            <div class="number" id="hours">00</div>
+            <div class="label">Horas</div>
+        </div>
+        <div class="time-box">
+            <div class="number" id="minutes">00</div>
+            <div class="label">Min</div>
+        </div>
+        <div class="time-box">
+            <div class="number" id="seconds">00</div>
+            <div class="label">Seg</div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <img src="1000041094.jpg" alt="Zaid, Lalito y Rocky preparando el lanzamiento de la app">
+    </div>
+
+    <footer>© 2026 — Zaid, Lalito & Rocky 🐶</footer>
+
+    <script>
+        // Inyecta las metatiquetas de URL e imagen para vistas previas dinámicas
+        (function () {
+            const metaSite = document.querySelector('meta[name="site-url"]');
+            const siteUrl = metaSite ? metaSite.content : '';
+            
+            if (siteUrl && siteUrl !== 'PEGAAQUI') {
+                const base = siteUrl.endsWith('/') ? siteUrl : siteUrl + '/';
+                const addMeta = (attr, value, content) => {
+                    const m = document.createElement('meta');
+                    m.setAttribute(attr, value);
+                    m.content = content;
+                    document.head.appendChild(m);
+                };
+                addMeta('property', 'og:url', base);
+                addMeta('property', 'og:image', base + '1000041094.jpg');
+                addMeta('name', 'twitter:image', base + '1000041094.jpg');
+            }
+        })();
+
+        // Fecha programada: 10 de octubre
+        function getTargetDate() {
+            const now = new Date();
+            let target = new Date(now.getFullYear(), 9, 10, 0, 0, 0); // Octubre = mes indexado en 9
+            if (target <= now) {
+                target = new Date(now.getFullYear() + 1, 9, 10, 0, 0, 0);
+            }
+            return target;
+        }
+
+        let targetDate = getTargetDate();
+
+        function updateCountdown() {
+            const now = new Date();
+            let diff = targetDate - now;
+
+            if (diff <= 0) {
+                targetDate = getTargetDate();
+                diff = targetDate - now;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / (1000 * 60)) % 60);
+            const seconds = Math.floor((diff / 1000) % 60);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+
+</body>
+</html>
