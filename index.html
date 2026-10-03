@@ -4,21 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Open Graph / Facebook (Esto es lo que verá Facebook) -->
+    <!-- Open Graph / Facebook -->
     <meta property="og:title" content="🚀 Lanzamiento 10 de Octubre">
     <meta property="og:description" content="¡Nuestra app está por despegar! Cuenta regresiva oficial del lanzamiento.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://vikali666.github.io/cuenta_regresiva/">
-    <!-- AQUÍ VA LA IMAGEN 179077 (La de las cortinas) -->
     <meta property="og:image" content="https://vikali666.github.io/cuenta_regresiva/179077.jpg">
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Lanzamiento de la app - 10 de octubre">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="🚀 Lanzamiento 10 de Octubre">
     <meta name="twitter:description" content="¡Nuestra app está por despegar! Cuenta regresiva oficial del lanzamiento.">
-    <!-- AQUÍ TAMBIÉN VA LA IMAGEN 179077 -->
     <meta name="twitter:image" content="https://vikali666.github.io/cuenta_regresiva/179077.jpg">
 
     <title>🚀 Cuenta regresiva — Lanzamiento 10 de Octubre</title>
@@ -60,7 +59,6 @@
             font-size: clamp(0.9rem, 2.5vw, 1.1rem);
         }
 
-        /* ===== Reloj cuenta regresiva ===== */
         .countdown {
             display: flex;
             gap: clamp(10px, 3vw, 25px);
@@ -93,7 +91,6 @@
             margin-top: 6px;
         }
 
-        /* ===== Imagen central ===== */
         .image-container {
             max-width: 900px;
             width: 100%;
@@ -140,32 +137,25 @@
     </div>
 
     <div class="image-container">
-        <!-- AQUÍ VA LA IMAGEN AIRBRUSH (La de los niños programando) -->
         <img src="airbrush.jpg" alt="Zaid, Lalito y Rocky preparando el lanzamiento de la app">
     </div>
 
-    <footer>© 2026 — Zaid, Lalito & Rocky 🐶</footer>
+    <footer>© 2026 — Zaid, Lalito &amp; Rocky 🐶</footer>
 
     <script>
-        // Fecha programada: 10 de octubre
-        function getTargetDate() {
-            const now = new Date();
-            let target = new Date(now.getFullYear(), 9, 10, 0, 0, 0); // Octubre = mes indexado en 9
-            if (target <= now) {
-                target = new Date(now.getFullYear() + 1, 9, 10, 0, 0, 0);
-            }
-            return target;
-        }
-
-        let targetDate = getTargetDate();
+        // Fecha fija: 10 de octubre de 2026 a las 00:00 (hora CDMX)
+        const targetDate = new Date("2026-10-10T00:00:00-06:00");
 
         function updateCountdown() {
             const now = new Date();
-            let diff = targetDate - now;
+            const diff = targetDate - now;
 
             if (diff <= 0) {
-                targetDate = getTargetDate();
-                diff = targetDate - now;
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                return;
             }
 
             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
